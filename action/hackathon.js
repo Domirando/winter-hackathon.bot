@@ -1,12 +1,9 @@
 const {Markup} = require('telegraf')
 const {bot} = require('../core/bot')
+const {keyboard} = require("telegraf/typings/markup");
 
 bot.command('hackathon', ctx => {
-  const message = '<b>Winter Web Hackathon</b> - is organizing by ' +
-    '<a href="https://github.com/Domirando">Domirando</a> ' +
-    'and supported by GD TEAM and IT School. In our Hackathon you have to ...  ' +
-    '\nPlease register if you haven\'t done yet, if done please join our ' +
-    'Telegram group and feel free to give a question about Winter Web Hackathon!!!'
+  const message = message["hackathon"]
   bot.telegram.sendMessage(ctx.chat.id, message,
     {
       parse_mode: 'HTML',
@@ -17,9 +14,16 @@ bot.command('hackathon', ctx => {
           ],
           [
             {text: 'Join the Hackathon group!', url: 'https://t.me/ITWebHackathon'}
-          ]
+          ],
+          [
+            {text: 'Download presentation for more information', callback_data: "presentation"}
+           ]
         ]
       }
     })
     .catch(e => console.error(e.message))
+})
+
+bot.action("presentation", ctx => {
+    ctx.replyWithDocument({source: "assets/winter_web_hackathon.pdf", filename: "Winter Web Hackathon.pdf"}).then()
 })

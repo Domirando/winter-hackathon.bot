@@ -1,8 +1,15 @@
+const { Composer } = require('telegraf')
+const { messages } = require('../lib/messages')
+
 const {bot} = require('../core/bot')
 
-bot.start(ctx => {
-  ctx.replyWithSticker('https://tenor.com/view/anime-wave-hi-hello-hey-gif-16679443')
+const composer = new Composer()
+
+composer.start(ctx => {
+  ctx.replyWithSticker(messages["greeting_gif"])
     .catch(e => console.error(e.message))
-  ctx.replyWithHTML(`Hello ${ctx.from.first_name}! \nI am very glad to see you!`)
+  ctx.replyWithHTML(messages["start"])
     .catch(e => console.error(e.message))
 })
+
+bot.use(composer.middleware())

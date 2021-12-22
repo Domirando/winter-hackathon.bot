@@ -1,12 +1,8 @@
 const {bot} = require('../core/bot')
+const {messages} = require("../lib/messages");
 
 bot.help(ctx => {
-  let text = `<b>Commands which you can use on me:</b> \n` +
-    `/start - <code>start bot</code> \n` +
-    `/help - <code>to get a list of commands</code> \n` +
-    `/hackathon - <code>more a about our Winter Web Hackathon</code> \n` +
-    `Author <a href="https://github.com/Domirando">Domirando</a> \n` +
-    `<pre>const require</pre> \n`
+  let text = messages["help"]
   ctx.replyWithHTML(text)
     .catch(e => console.error(e.message))
 })

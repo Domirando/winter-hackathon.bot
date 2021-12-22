@@ -7,5 +7,6 @@ bot.help(ctx => {
     `/hackathon - <code>more a about our Winter Web Hackathon</code> \n` +
     `Author <a href="https://github.com/Domirando">Domirando</a> \n` +
     `<pre>const require</pre> \n`
-  ctx.replyWithHTML(text).then()
+  ctx.replyWithHTML(text)
+    .catch(e => console.error(e.message))
 })

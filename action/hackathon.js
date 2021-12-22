@@ -20,5 +20,6 @@ bot.command('hackathon', ctx => {
           ]
         ]
       }
-    }).then()
+    })
+    .catch(e => console.error(e.message))
 })

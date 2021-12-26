@@ -12,7 +12,7 @@ bot.command('question', ctx => {
             question = false;
             ctx.replyWithHTML(messages.question).then(r => console.log(r))
         }else{
-            ctx.replyWithHTML(`Please run <code>/question</code> command!`).then(r => console.log(r))
+            ctx.replyWithHTML(`Please, define what are you going to do and run a command first of all!\nTo see the list of commands run <code>/help</code>.`).then()
         }
     })
 })

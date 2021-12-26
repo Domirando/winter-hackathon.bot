@@ -8,11 +8,10 @@ bot.command('offer', ctx => {
         ctx.replyWithHTML("Feel free to give any offer, you thoughts and offers are highly appreciated!").then(r => console.log(r))
     }
     bot.on('text', ctx => {
-        if (offer) {
-            offer = false;
+        if(offer) {
             ctx.replyWithHTML(messages.offer).then(r => console.log(r))
         }else{
-            ctx.replyWithHTML(`Please run <code>/offer</code> command!`).then(r => console.log(r))
+            ctx.replyWithHTML(`Please, define what are you going to do and run a command first of all!\nTo see the list of commands run <code>/help</code>.`).then()
         }
     })
 })

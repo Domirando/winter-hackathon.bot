@@ -11,7 +11,7 @@ bot.command('hackathon', ctx => {
       reply_markup: {
         inline_keyboard: [
           [
-            {text: 'Register to the Hackathon', url: 'https://forms.gle/z1qj6kadUWC1TMkQ9'}
+            {text: 'Register to the Hackathon', url: 'https://forms.gle/qf8TVs3osFEtK6cr7'}
           ],
           [
             {text: 'Join the Hackathon group!', url: 'https://t.me/ITWebHackathon'}
@@ -26,5 +26,5 @@ bot.command('hackathon', ctx => {
 })
 
 bot.action("presentation", ctx => {
-    ctx.replyWithDocument({source: "assets/winter_web_hackathon.pdf", filename: "Winter Web Hackathon.pdf"}, { caption: `Bot: ${ctx.from.username}`}).then()
+    ctx.replyWithDocument({source: "assets/winter_web_hackathon.pdf", filename: "Winter Web Hackathon.pdf"}, { caption: `Bot: @${bot.botInfo.username}`}).then(r => console.log(r))
 })

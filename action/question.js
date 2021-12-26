@@ -8,6 +8,11 @@ bot.command('question', ctx => {
         ctx.replyWithHTML("Feel free to give any question related to Hackathon!").then(r => console.log(r))
     }
     bot.on('text', ctx => {
-        ctx.replyWithHTML(messages.question).then(r => console.log(r))
+        if (question) {
+            question = false;
+            ctx.replyWithHTML(messages.question).then(r => console.log(r))
+        }else{
+            ctx.replyWithHTML(`Please run <code>/question</code> command!`).then(r => console.log(r))
+        }
     })
 })

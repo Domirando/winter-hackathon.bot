@@ -7,9 +7,9 @@ const composer = new Composer()
 
 composer.start(ctx => {
   ctx.replyWithSticker(messages.greeting_gif)
-    .catch(e => console.error(e.message))
+      .catch(e => console.error(e.message))
   ctx.replyWithHTML(messages.start(ctx))
-    .catch(e => console.error(e.message))
+      .catch(e => console.error(e.message))
 })
 
 bot.use(composer.middleware())

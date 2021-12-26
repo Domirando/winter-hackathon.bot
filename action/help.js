@@ -1,8 +1,14 @@
-const {bot} = require('../core/bot')
-const {messages} = require("../lib/messages");
+const { Composer } = require('telegraf')
+const { messages } = require('../lib/messages')
 
-bot.help(ctx => {
-  let text = messages["help"]
+const {bot} = require('../core/bot')
+
+const composer = new Composer()
+
+composer.help(ctx => {
+  let text = messages.help
   ctx.replyWithHTML(text)
-    .catch(e => console.error(e.message))
+      .catch(e => console.error(e.message))
 })
+
+bot.use(composer.middleware())

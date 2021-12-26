@@ -6,13 +6,11 @@ function getExtension(filename) {
     var ext = path.extname(filename||'').split('.');
     return ext[ext.length - 1];
 }
+let zipFile = false
 
 bot.command('zipFile', ctx => {
-    let zipFile = false;
-    if (ctx.message.text === '/zipFile'){
         zipFile = true;
         ctx.replyWithHTML("Now I am ready to get your project!").then(r => console.log(r))
-    }
     bot.on('document', ctx => {
         let file = getExtension(ctx.message.document.file_name);
         if (file==="zip" && zipFile) {

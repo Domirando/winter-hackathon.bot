@@ -1,6 +1,5 @@
 const {Markup} = require('telegraf')
 const {bot} = require('../core/bot')
-const {keyboard} = require("telegraf/typings/markup");
 
 bot.command('hackathon', ctx => {
   const message = message["hackathon"]

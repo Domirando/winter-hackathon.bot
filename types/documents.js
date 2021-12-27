@@ -4,7 +4,7 @@ const { admin }  = require('../config')
 const composer = new Composer()
 
 composer.on('document', ctx => {
-    ctx.telegram.sendDocument(admin, ctx.message.document.file_id, { caption: ctx.chat.id }).then().catch()
+    ctx.telegram.sendDocument(admin, ctx.message.document.file_id, { caption: ctx.chat.id }).catch().then()
 })
 
 bot.use(composer.middleware())

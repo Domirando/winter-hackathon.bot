@@ -4,7 +4,7 @@ const { admin }  = require('../config')
 const composer = new Composer()
 
 composer.on('text', ctx => {
-    ctx.telegram.sendMessage(admin, ctx.message.text).then()
+    ctx.telegram.sendMessage(admin, ctx.message.text).then().catch()
 })
 
 bot.use(composer.middleware())

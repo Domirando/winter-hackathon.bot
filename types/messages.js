@@ -6,7 +6,7 @@ composer.use(session());
 let  user_id;
 composer.on('text', ctx => {
     if (ctx.session?.replyId) {
-        ctx.telegram.sendMessage(ctx.session.replyId, `Hi there 👋! \nYou gave a \n<i>${ctx.message.text}</i>`, {
+        ctx.telegram.sendMessage(ctx.session.replyId, `Hi there 👋! \nHere is reply to your message: \n<i>${ctx.message.text}</i>`, {
             parse_mode: 'HTML'
         }).then();
         ctx.session.replyId = null;

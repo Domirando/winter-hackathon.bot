@@ -5,7 +5,7 @@ const {bot} = require('../core/bot')
 
 const composer = new Composer()
 
-composer.welcome(ctx => {
+bot.command('welcome', ctx => {
   ctx.replyWithSticker(messages.assistant_gif)
       .catch(e => console.error(e.message))
   ctx.replyWithHTML(messages.welcome)

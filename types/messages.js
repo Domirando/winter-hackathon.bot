@@ -6,7 +6,7 @@ composer.use(session());
 let  user_id;
 composer.on('text', ctx => {
     if (ctx.session?.replyId) {
-        ctx.telegram.sendMessage(ctx.session.replyId, `Hi there 👋! \nYou gave a question so here is an answer: \n<i>${ctx.message.text}</i>`, {
+        ctx.telegram.sendMessage(ctx.session.replyId, `Hi there 👋! \nYou gave a \n<i>${ctx.message.text}</i>`, {
             parse_mode: 'HTML'
         }).then();
         ctx.session.replyId = null;
@@ -29,7 +29,7 @@ composer.on('text', ctx => {
 composer.action(/reply_(.+)/, ctx => {
     if (!ctx.session) { ctx.session = {} };
     ctx.session.replyId = ctx.match[1];
-    ctx.reply("Send me your answer");
+    ctx.reply(`Send me your answer... Your answer will be after <i>'Hi there 👋! You gave a '</i>`);
 })
 bot.use(composer.middleware())
 

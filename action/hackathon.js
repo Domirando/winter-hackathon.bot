@@ -11,13 +11,13 @@ bot.command('hackathon', ctx => {
       reply_markup: {
         inline_keyboard: [
           [
-            {text: 'Register to the Hackathon', url: 'https://forms.gle/qf8TVs3osFEtK6cr7'}
+            {text: '✨Register to the Hackathon', url: 'https://forms.gle/qf8TVs3osFEtK6cr7'}
           ],
           [
-            {text: 'Join the Hackathon group!', url: 'https://t.me/ITWebHackathon'}
+            {text: '❄️Join the Hackathon group!', url: 'https://t.me/ITWebHackathon'}
           ],
           [
-            {text: 'Download presentation for more information', callback_data: "presentation"}
+            {text: '✨Download presentation for more information', callback_data: "presentation"}
            ]
         ]
       }

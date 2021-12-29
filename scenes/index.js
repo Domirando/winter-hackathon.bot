@@ -1,5 +1,9 @@
 const offerScene = require('./offerScene')
+const questionScene = require('./questionScene')
+const zipFileScene = require('./zipFileScene')
 
 module.exports = {
-    offerScene
+    questionScene,
+    offerScene,
+    zipFileScene
 }

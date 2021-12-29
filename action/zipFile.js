@@ -1,26 +1,9 @@
 const { bot } = require('../core/bot')
-const { messages } = require('../lib/messages')
-var path = require('path')
+const { Scenes: { Stage } } = require ('telegraf');
+const { session } = require('telegraf')
+const { zipFileScene } = require('../scenes')
+const stage = new Stage([zipFileScene])
+bot.use(session())
+bot.use(stage.middleware())
 
-function getExtension(filename) {
-    var ext = path.extname(filename||'').split('.');
-    return ext[ext.length - 1];
-}
-let zipFile = false
-
-bot.command('zipFile', ctx => {
-        zipFile = true;
-        ctx.replyWithHTML("Now I am ready to get your project!").then(r => console.log(r))
-    bot.on('document', ctx => {
-        let file = getExtension(ctx.message.document.file_name);
-        if (file==="zip" && zipFile) {
-            zipFile = false;
-            ctx.replyWithHTML(messages.zipFile).then(r => console.log(r))
-        }else if(!zipFile){
-            ctx.replyWithHTML(`Please, define what are you going to do and run a command first of all!
-To see the list of commands run <code>/help</code>.`).then();
-        }else if(getExtension(file) !== "zip"){
-            ctx.replyWithHTML(`Please send just zip file of your project!`).then()
-        }
-    })
-})
+bot.command('zipFile', ctx => ctx.scene.enter('zipFileScene'))

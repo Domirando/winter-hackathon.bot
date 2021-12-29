@@ -1,13 +1,13 @@
 const { messages }= require('../lib/messages')
 const { Scenes: { BaseScene: Scene } } = require('telegraf');
-const zipFileScene = new Scene('zipFileScene')
-zipFileScene.enter(ctx => ctx.reply("Feel free to give any zipFile related to Hackathon 😉 ... "))
-zipFileScene.on('text', ctx => {
-    ctx.session.name = ctx.message.document.file_id
+const questionScene = new Scene('questionScene')
+questionScene.enter(ctx => ctx.reply("Feel free to give any question related to Hackathon 😉 ... "))
+questionScene.on('text', ctx => {
+    ctx.session.name = ctx.message.text
     return ctx.scene.leave()
 })
-zipFileScene.leave(ctx => {
-    ctx.reply(messages.zipFile).then()
+questionScene.leave(ctx => {
+    ctx.reply(messages.question).then()
 })
 
-module.exports = zipFileScene
+module.exports = questionScene

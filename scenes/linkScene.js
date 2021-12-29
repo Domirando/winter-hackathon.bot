@@ -1,4 +1,3 @@
-var path = require('path')
 const { messages }= require('../lib/messages')
 const { Scenes: { BaseScene: Scene } } = require('telegraf');
 const linkScene = new Scene('linkScene')
@@ -8,15 +7,16 @@ function isValidUrl(_string) {
     return matchpattern.test(_string);
 }
 let file;
+console.log(isValidUrl(file))
 linkScene.enter(ctx => ctx.reply("Now I am ready to get your project's link!"))
-linkScene.on('document', ctx => {
+linkScene.on('text', ctx => {
     ctx.session.name = ctx.message.text
     file = ctx.message.text;
     return ctx.scene.leave()
 })
 linkScene.leave(ctx => {
     if ( isValidUrl(file) ) {
-        ctx.replyWithHTML(messages.zipFile).then(r => console.log(r))
+        ctx.replyWithHTML(messages.link).then(r => console.log(r))
         ctx.replyWithAnimation('https://tenor.com/bdyvr.gif').then()
     }else if(!isValidUrl(file)){
         ctx.replyWithHTML(`Please send just link of your project!`).then()

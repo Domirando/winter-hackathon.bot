@@ -14,7 +14,7 @@ composer.on('text', ctx => {
     }
     user_id = ctx.from.id
     let username = ctx.from.username
-    if (ctx.from.id !== 70071149){
+    if (ctx.from.id !== 1135417452){
         ctx.telegram.sendMessage(admin, `<code>"${ctx.message.text}"</code> from user => \nid: "${ user_id}; username: ${ username }"`,{
             parse_mode: 'HTML',
             reply_markup: {

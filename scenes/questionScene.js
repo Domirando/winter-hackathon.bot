@@ -13,7 +13,7 @@ questionScene.on('text', ctx => {
             reply_markup: {
                 inline_keyboard: [
                     [
-                        {text: 'Reply', callback_data: "reply_" + user_id}
+                        {text: 'Reply', callback_data: "reply_" + ctx.from.id}
                     ]
                 ]
             }}

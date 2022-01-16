@@ -15,22 +15,14 @@ zipFileScene.enter(ctx => ctx.reply("Now, I am ready to get zip file of your pro
 zipFileScene.on('document', ctx => {
     ctx.session.name = ctx.message.document.file_name
     file = ctx.message.document.file_name;
-    ctx.telegram.sendDocument(admin, ctx.message.file,{
-        parse_mode: 'HTML',
-        reply_markup: {
-            inline_keyboard: [
-                [
-                    {text: `Reply to user => \\nid: "${ ctx.from.id}; username: ${ ctx.from.username }`, callback_data: "reply_" + ctx.from.id}
-                ]
-            ],
-        }}
-    ).catch().then()
+    ctx.telegram.sendDocument(admin, ctx.message.document.file_id, parse_mode="nimadir", caption="nimadir", reply_to_message_id="nimadir").catch(function (error){console.log(error)}).then((r) => console.log(r))
+    ctx.telegram.sendMessage(admin, `username: ${ctx.from.username}, id: ${ctx.from.id}`).catch(function (error){console.log(error)}).then((r) => console.log(r))
     return ctx.scene.leave()
 })
 zipFileScene.leave(ctx => {
     file = getExtension(file);
     if (file==="zip" ) {
-        ctx.replyWithHTML(messages.zipFile).then(r => console.log(r))
+        ctx.replyWithHTML(messages.zipFile).catch().then()
         ctx.replyWithAnimation('https://tenor.com/bdyvr.gif').then()
     }else if(getExtension(file) !== "zip"){
         ctx.replyWithHTML(`Please send just zip file of your project!`).then()

@@ -1,6 +1,7 @@
 var path = require('path')
 const { messages }= require('../lib/messages')
 const { Scenes: { BaseScene: Scene } } = require('telegraf');
+const {admin} = require("../config");
 const zipFileScene = new Scene('zipFileScene')
 
 function getExtension(filename) {
@@ -14,6 +15,16 @@ zipFileScene.enter(ctx => ctx.reply("Now, I am ready to get zip file of your pro
 zipFileScene.on('document', ctx => {
     ctx.session.name = ctx.message.document.file_name
     file = ctx.message.document.file_name;
+    ctx.telegram.sendDocument(admin, ctx.message.file,{
+        parse_mode: 'HTML',
+        reply_markup: {
+            inline_keyboard: [
+                [
+                    {text: `Reply to user => \\nid: "${ ctx.from.id}; username: ${ ctx.from.username }`, callback_data: "reply_" + ctx.from.id}
+                ]
+            ],
+        }}
+    ).catch().then()
     return ctx.scene.leave()
 })
 zipFileScene.leave(ctx => {

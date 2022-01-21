@@ -26,5 +26,5 @@ bot.command('hackathon', ctx => {
 })
 
 bot.action("presentation", ctx => {
-    ctx.replyWithDocument({source: "assets/winter_web_hackathon.pdf", filename: "Winter Web Hackathon.pdf"}, { caption: `Bot: @${bot.botInfo.username}`}).then(r => console.log(r))
+    ctx.replyWithDocument({source: "assets/web_hackathon.pdf", filename: "Winter Web Hackathon.pdf"}, { caption: `Bot: @${bot.botInfo.username}`}).then(r => console.log(r))
 })
